@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import java.time.LocalDateTime;
 
 @Entity
@@ -14,18 +13,37 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Menu {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    /** 레스토랑 **/
+    @ManyToOne(fetch = FetchType.LAZY)
     private Restaurant restaurant;
 
+    /** 이름 **/
+    @Column(length = 20)
     private String name;
-    private int price;
-    private String description;
-    private boolean isMain;
-    private String imageUrl;
-    private LocalDateTime createdAt;
 
+    /** 가격 **/
+    @Column(length = 20)
+    private int price;
+
+    /** 설명 **/
+    @Column(length = 100)
+    private String description;
+
+    /** 대표 여부 **/
+    private boolean isMain;
+
+    /** 이미지 **/
+    @Column(length = 200)
+    private String imageUrl;
+
+    /** 노출 여부 **/
+    private Boolean visible = true;
+
+    /** 생성 일시 **/
+    private LocalDateTime createdAt = LocalDateTime.now();
 }

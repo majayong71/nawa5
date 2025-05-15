@@ -5,41 +5,42 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 /**
- * 리뷰
+ * 인기글
  */
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
-public class Review {
+@AllArgsConstructor
+@NoArgsConstructor
+public class HotPost {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    /** 유저 **/
+    /** 게시글 **/
     @ManyToOne (fetch = FetchType.LAZY)
-    private User user;
+    private Post post;
 
-    /** 레스토랑 **/
-    @ManyToOne (fetch = FetchType.LAZY)
-    private Restaurant restaurant;
+    /** 일자 **/
+    private LocalDate date;
 
-    /** 내용 **/
-    @Column(length = 200)
-    private String content;
+    /** 순위 **/
+    private int rank;
 
-    /** 점수 **/
-    @Column(length = 5)
-    private int rating;
+    /** 카테고리 **/
+    @Enumerated(EnumType.STRING)
+    @Column(length = 20)
+    private HotPostCategory hotPostCategory;
 
     /** 상태 **/
     @Enumerated(EnumType.STRING)
-    private ReviewStatus reviewStatus = ReviewStatus.REGISTERED;
+    @Column(length = 10)
+    private HotPostStatus hotPostStatus = HotPostStatus.REGISTERED;
 
     /** 생성 일시 **/
     private LocalDateTime createdAt = LocalDateTime.now();
