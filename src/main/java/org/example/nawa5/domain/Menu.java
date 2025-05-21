@@ -42,7 +42,7 @@ public class Menu {
     private String imageUrl;
 
     /** 노출 여부 **/
-    private Boolean visible = true;
+    private boolean visible = true;
 
     /** 생성 일시 **/
     private LocalDateTime createdAt = LocalDateTime.now();
