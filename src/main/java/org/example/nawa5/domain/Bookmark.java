@@ -30,6 +30,8 @@ public class Bookmark {
     private Post post;
 
     /** 상태 **/
+    /** @Enumerated Type.ORIGINAL = enum 순서(숫자)값을 DB에 저장  **/
+    /** @Enumerated Type.STRING = enum 이름을 DB에 저장 **/
     @Enumerated(EnumType.STRING)
     @Column(length = 20)
     private BookmarkStatus bookmarkStatus = BookmarkStatus.REGISTERED;

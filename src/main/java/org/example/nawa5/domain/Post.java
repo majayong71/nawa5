@@ -11,8 +11,7 @@ import java.time.LocalDateTime;
  * 게시글
  */
 @Entity
-@Getter
-@Setter
+@Getter @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Post {
@@ -52,4 +51,5 @@ public class Post {
 
     /** 생성 일시 **/
     private LocalDateTime createdAt = LocalDateTime.now();
+
 }
