@@ -5,7 +5,7 @@ import org.example.nawa5.domain.User;
 public interface UserService {
 
     /** 회원 가입 **/
-    User register (User user);
+    void register (String email, String password, String nickname);
 
     /** 로그인 **/
     User login (String email, String password);
@@ -14,7 +14,10 @@ public interface UserService {
     User getUser (String user);
 
     /** 회원 정보 수정  **/
-    User updateUser (User user);
+    void updateUser (Long id, String nickname);
+    
+    /** 회원 패스워드 수정 **/
+    void updatePassword (Long id, String password);
 
     /** 회원 탈퇴 **/
     User deleteUser (String user);
