@@ -55,4 +55,15 @@ public class Restaurant {
 
     /** 생성 일시 **/
     private LocalDateTime createdAt = LocalDateTime.now();
+
+
+    public Restaurant(String name, RestaurantCategory category, String address, LocalDateTime businessHours, String phoneNumber, String description, String mainImageUrl) {
+        this.name = name;
+        this.category = category;
+        this.address = address;
+        this.businessHours = businessHours;
+        this.phoneNumber = phoneNumber;
+        this.description = description;
+        this.mainImageUrl = mainImageUrl;
+    }
 }
