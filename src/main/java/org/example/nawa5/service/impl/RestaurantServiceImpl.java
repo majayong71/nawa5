@@ -18,13 +18,14 @@ public class RestaurantServiceImpl implements RestaurantService {
     @Override
     public Restaurant createRestaurant(Restaurant restaurant) {
         return restaurantRepository.save(restaurant);
-    } //Todo: 레스토랑 생성 로직 구현
+    }
 
     @Override
     public List<Restaurant> getAllRestaurants() {
         List<Restaurant> restaurants = restaurantRepository.findAll();
         return List.of();
-    }
+
+    }//Todo: 레스토랑 서비스 로직 구현
 
     @Override
     public Restaurant getRestaurantById(Long restaurantId) {
