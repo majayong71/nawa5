@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/nawa5
+    username: root
+    password: QhrtnswoTkddl1!6
+  jpa:
+    show-sql: true
+    hibernate:
+        ddl-auto: none
+
+
+logging:
+  level:
+    org.hibernate.sql: debug
