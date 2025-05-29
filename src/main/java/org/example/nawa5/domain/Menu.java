@@ -7,6 +7,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.time.LocalDateTime;
 
+/**
+ * 메뉴
+ */
 @Entity
 @Getter
 @Setter

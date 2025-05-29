@@ -44,4 +44,5 @@ public class HotPost {
 
     /** 생성 일시 **/
     private LocalDateTime createdAt = LocalDateTime.now();
+
 }

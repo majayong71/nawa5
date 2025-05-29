@@ -8,10 +8,10 @@ public interface UserService {
     void register (String email, String password, String nickname);
 
     /** 로그인 **/
-    User login (String email, String password);
+    void login (String email, String password);
 
     /** 회원 정보 조회 **/
-    User getUser (String user);
+    User getUser (Long id);
 
     /** 회원 정보 수정  **/
     void updateUser (Long id, String nickname);
@@ -20,6 +20,5 @@ public interface UserService {
     void updatePassword (Long id, String password);
 
     /** 회원 탈퇴 **/
-    User deleteUser (String user);
-
+    void deleteUser (Long id);
 }
