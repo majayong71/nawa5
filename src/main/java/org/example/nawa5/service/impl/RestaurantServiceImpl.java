@@ -7,6 +7,7 @@ import org.example.nawa5.service.RestaurantService;
 import org.springframework.stereotype.Service;
 import jakarta.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -23,27 +24,57 @@ public class RestaurantServiceImpl implements RestaurantService {
     @Override
     public List<Restaurant> getAllRestaurants() {
         List<Restaurant> restaurants = restaurantRepository.findAll();
-        return List.of();
+        return restaurants;
 
-    }//Todo: 레스토랑 서비스 로직 구현
+    }
 
     @Override
     public Restaurant getRestaurantById(Long restaurantId) {
-        return null;
+        Optional<Restaurant> restaurant = restaurantRepository.findById(restaurantId);
+
+        /** IllegalArgumentException = 잘못된 인자 예외처리.   **/
+        if(restaurant.isPresent()) {
+            return restaurant.get();
+        } else {
+            throw new IllegalArgumentException("해당 레스토랑은 존재하지 않습니다.");
+        }
     }
 
     @Override
     public List<Restaurant> getRestaurantByCategory(String category) {
-        return List.of();
-    }
-
-    @Override
-    public Restaurant updateRestaurant(Long restaurantId, Restaurant restaurant) {
+//        List<Restaurant> restaurants = restaurantRepository.findByCategory(category);
+//
+//        return restaurants;
         return null;
     }
 
     @Override
+    public Restaurant updateRestaurant(Long restaurantId, Restaurant restaurant) {
+        Optional<Restaurant> restaurantOptional = restaurantRepository.findById(restaurantId);
+        if (restaurantOptional.isPresent()) {
+            Restaurant existingRestaurant = restaurantOptional.get();
+            existingRestaurant.setName(restaurant.getName());
+            existingRestaurant.setCategory(restaurant.getCategory());
+            existingRestaurant.setAddress(restaurant.getAddress());
+            existingRestaurant.setBusinessHours(restaurant.getBusinessHours());
+            existingRestaurant.setPhoneNumber(restaurant.getPhoneNumber());
+            existingRestaurant.setDescription(restaurant.getDescription());
+            existingRestaurant.setMainImageUrl(restaurant.getMainImageUrl());
+            return restaurantRepository.save(existingRestaurant);
+
+        } else {
+            throw new IllegalArgumentException("해당 레스토랑은 존재하지 않습니다.");
+        }
+    }
+
+    @Override
     public void deleteRestaurant(Long restaurantId) {
+        Optional<Restaurant> restaurant = restaurantRepository.findById(restaurantId);
+        if (restaurant.isPresent()) {
+            restaurant.get().setVisible(false);
+        } else {
+            throw new IllegalArgumentException("해당 레스토랑은 존재하지 않습니다.");
+        }
 
     }
 
