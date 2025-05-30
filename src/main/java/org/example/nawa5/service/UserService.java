@@ -11,14 +11,14 @@ public interface UserService {
     void login (String email, String password);
 
     /** 회원 정보 조회 **/
-    User getUser (Long id);
+    User get(Long id);
 
     /** 회원 정보 수정  **/
-    void updateUser (Long id, String nickname);
+    void update(Long id, String nickname);
     
     /** 회원 패스워드 수정 **/
     void updatePassword (Long id, String password);
 
     /** 회원 탈퇴 **/
-    void deleteUser (Long id);
+    void delete(Long id);
 }

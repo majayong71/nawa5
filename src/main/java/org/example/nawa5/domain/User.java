@@ -38,6 +38,7 @@ public class User {
     /** 생성 일시 **/
     private LocalDateTime createdAt = LocalDateTime.now();
 
+    /** 삭제 일시 **/
     private LocalDateTime deletedAt;
 
     public User(String email, String password, String nickname) {
@@ -46,16 +47,18 @@ public class User {
         this.nickname = nickname;
     }
 
-    public void updateUser(String nickname) {
+    /** 마이페이지 회원 정보 수정 **/
+    public void update(String nickname) {
         this.nickname = nickname;
+        // 전화번호
+        // 생년월일 등등
     }
-
 
     public void updatePassword(String password){
         this.password = password;
     }
 
-    public void deleteUser() {
+    public void delete() {
         this.status = UserStatus.DELETED;
         this.deletedAt = LocalDateTime.now();
     }

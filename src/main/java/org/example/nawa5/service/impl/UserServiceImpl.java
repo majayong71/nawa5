@@ -21,6 +21,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void register(String email, String password, String nickname) {
+
         // 이메일 중복 검사
         if(userRepository.existsByEmail(email)) { // 이메일이 존재
             throw new IllegalArgumentException("이미 중복된 이메일입니다.");
@@ -42,15 +43,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getUser(Long id) {
+    public User get(Long id) {
         return userRepository.findById(id).get();
     }
 
     @Override
-    public void updateUser(Long id, String nickname) {
+    public void update(Long id, String nickname) {
         User user = userRepository.findById(id).get();
 
-        user.updateUser(nickname);
+        user.update(nickname);
     }
 
     @Override
@@ -61,9 +62,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void deleteUser(Long id) {
+    public void delete(Long id) {
         User user = userRepository.findById(id).get();
 
-        user.deleteUser();
+        user.delete();
     }
 }
