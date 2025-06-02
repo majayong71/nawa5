@@ -48,7 +48,14 @@ public class Menu {
     /** 생성 일시 **/
     private LocalDateTime createdAt = LocalDateTime.now();
 
-    public Menu(Restaurant restaurant, String name, int price, String description, boolean isMain, String imageUrl) {
+    /** 삭제 일시 **/
+    private LocalDateTime deletedAt;
+
+
+    public Menu(
+            Restaurant restaurant, String name, int price, String description,
+            boolean isMain, String imageUrl
+    ) {
         this.restaurant = restaurant;
         this.name = name;
         this.price = price;
@@ -57,6 +64,19 @@ public class Menu {
         this.imageUrl = imageUrl;
     }
 
-    /** 삭제 일시 **/
+    public void update(
+            String name, int price, String description, boolean isMain,
+            String ImageUrl, boolean visible
+    ) {
+        this.name = name;
+        this.price = price;
+        this.description = description;
+        this.isMain = isMain;
+        this.imageUrl = ImageUrl;
+    }
 
+    public void delete () {
+        this.visible = false;
+        this.deletedAt = LocalDateTime.now();
+    }
 }
