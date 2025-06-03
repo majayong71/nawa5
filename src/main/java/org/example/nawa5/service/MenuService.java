@@ -12,12 +12,13 @@ public interface MenuService {
     /** 모든 메뉴 조회 **/
     List<Menu> getAll(Long id);
 
+    /** 메뉴 상세 조회 **/
+    Menu get (Long id);
+
     /** 메뉴 수정 **/
     void update(Long id, String name, int price, String description, boolean isMain, String imageUrl);
 
     /** 메뉴 삭제 **/
     void delete(Long id);
-
-
 
 }

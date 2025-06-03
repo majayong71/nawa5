@@ -18,6 +18,11 @@ public class MenuServiceImpl implements MenuService {
     }
 
     @Override
+    public Menu get(Long id) {
+        return null;
+    }
+
+    @Override
     public void update(Long id, String name, int price, String description, boolean isMain, String imageUrl) {
 
     }
