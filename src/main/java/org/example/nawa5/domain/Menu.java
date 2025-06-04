@@ -66,13 +66,13 @@ public class Menu {
 
     public void update(
             String name, int price, String description, boolean isMain,
-            String ImageUrl, boolean visible
+            String imageUrl
     ) {
         this.name = name;
         this.price = price;
         this.description = description;
         this.isMain = isMain;
-        this.imageUrl = ImageUrl;
+        this.imageUrl = imageUrl;
     }
 
     public void delete () {
