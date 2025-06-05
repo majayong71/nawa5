@@ -9,7 +9,6 @@ import org.example.nawa5.repository.RestaurantRepository;
 import org.example.nawa5.service.MenuService;
 import org.springframework.stereotype.Service;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Transactional
@@ -20,29 +19,44 @@ public class MenuServiceImpl implements MenuService {
     private final RestaurantRepository restaurantRepository;
 
     @Override
-    public void register(Long restaurantId, String name, int price, String description, boolean isMain, String imageUrl) {
+    public void register(
+            Long id, String name, int price,
+            String description, boolean isMain, String imageUrl
+    ) {
+        Restaurant restaurant = restaurantRepository.findById(id).get();
 
+        Menu menu = new Menu(
+                restaurant, name, price, description, isMain,
+                imageUrl
+        );
+        menuRepository.save(menu);
     }
 
     @Override
     public List<Menu> getAll(Long id) {
-        Optional<Restaurant> restaurant = restaurantRepository.findById(id);
-
-        return menuRepository.findByRestaurant(restaurant.get());
+        return menuRepository.findByRestaurantId(id);
     }
 
     @Override
     public Menu get(Long id) {
-        return null;
+        return menuRepository.findById(id).get();
     }
 
     @Override
-    public void update(Long id, String name, int price, String description, boolean isMain, String imageUrl) {
-
+    public void update(
+            Long id, String name, int price, String description,
+            boolean isMain, String imageUrl
+    ) {
+        Menu menu = menuRepository.findById(id).get();
+        menu.update(
+                name, price, description, isMain, imageUrl
+        );
     }
 
     @Override
     public void delete(Long id) {
-
+        Menu menu = menuRepository.findById(id).get();
+        /** 도메인 메서드 delete 를 사용해서 상태를 visible = false 로 변경 **/
+        menu.delete();
     }
 }
