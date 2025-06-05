@@ -14,7 +14,6 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-@Setter
 public class Review {
 
     @Id
@@ -33,6 +32,10 @@ public class Review {
     @Column(length = 200)
     private String content;
 
+    /** 이미지 **/
+    @Column(length = 200)
+    private String imageUrl;
+
     /** 점수 **/
     @Column(length = 5)
     private int rating;
@@ -43,4 +46,24 @@ public class Review {
 
     /** 생성 일시 **/
     private LocalDateTime createdAt = LocalDateTime.now();
+
+    public Review(User user, Restaurant restaurant, String content,String imageUrl, int rating) {
+        this.user = user;
+        this.restaurant = restaurant;
+        this.content = content;
+        this.imageUrl = imageUrl;
+        this.rating = rating;
+    }
+
+    /** 리뷰 수정 **/
+    public void update(String content,String imageUrl, int rating) {
+        this.content = content;
+        this.imageUrl = imageUrl;
+        this.rating = rating;
+    }
+
+    /** 리뷰 삭제 **/
+    public void delete() {
+        this.reviewStatus = ReviewStatus.DELETED;
+    }
 }
