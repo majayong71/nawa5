@@ -59,6 +59,10 @@ public class User {
     }
 
     public void delete() {
+        if (this.status != UserStatus.ACTIVATE) {
+            throw new IllegalStateException("check fail");
+        }
+
         this.status = UserStatus.DELETED;
         this.deletedAt = LocalDateTime.now();
     }

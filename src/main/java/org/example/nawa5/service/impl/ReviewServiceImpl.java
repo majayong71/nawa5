@@ -10,6 +10,7 @@ import org.example.nawa5.repository.ReviewRepository;
 import org.example.nawa5.repository.UserRepository;
 import org.example.nawa5.service.ReviewService;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @Service
@@ -21,35 +22,34 @@ public class ReviewServiceImpl implements ReviewService {
     private final RestaurantRepository restaurantRepository;
     private final UserRepository userRepository;
 
-
     @Override
-    public void register(
-            Long userId, Long restaurantId, String content,
-            int rating, String imageUrl
-    ) {
+    public void register(Long userId, Long restaurantId, String content, int rating, String imageUrl) {
         User user = userRepository.findById(userId).get();
         Restaurant restaurant = restaurantRepository.findById(restaurantId).get();
 
         Review review = new Review(user, restaurant, content, imageUrl, rating);
+
         reviewRepository.save(review);
     }
 
     @Override
-    public List<Review> get(Long id) {
-        return reviewRepository.findByRestaurantId(id);
+    public List<Review> gets(Long restaurantId) {
+        Restaurant restaurant = restaurantRepository.findById(restaurantId).get();
+
+        return reviewRepository.findByRestaurant(restaurant);
     }
 
     @Override
-    public void update(Long id, String content, int rating, String imageUrl) {
+    public void update(Long id, Long userId, String content, int rating, String imageUrl) {
         Review review = reviewRepository.findById(id).get();
 
-        review.update(content,imageUrl,rating);
+        review.update(userId, content, imageUrl, rating);
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(Long id, Long userId) {
         Review review = reviewRepository.findById(id).get();
 
-        review.delete();
+        review.delete(userId);
     }
 }

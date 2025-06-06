@@ -9,7 +9,7 @@ import java.util.List;
 public interface RestaurantService {
 
     /**
-     * 레스토랑 생성 (관리자 or 크롤링 후 수동 등록 )
+     * 레스토랑 등록 (관리자 or 크롤링 후 수동 등록 )
      **/
     void register(
             String name, RestaurantCategory category, String address, LocalDateTime businessHours,

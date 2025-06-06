@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
 import java.time.LocalDateTime;
 
 /**
@@ -19,42 +20,66 @@ public class Menu {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    /** 레스토랑 **/
+    /**
+     * 레스토랑
+     **/
     @ManyToOne(fetch = FetchType.LAZY)
     private Restaurant restaurant;
 
-    /** 이름 **/
+    /**
+     * 이름
+     **/
     @Column(length = 20)
     private String name;
 
-    /** 가격 **/
+    /**
+     * 가격
+     **/
     @Column(length = 20)
     private int price;
 
-    /** 설명 **/
+    /**
+     * 설명
+     **/
     @Column(length = 100)
     private String description;
 
-    /** 대표 여부 **/
+    /**
+     * 대표 여부
+     **/
     private boolean isMain;
 
-    /** 이미지 **/
+    /**
+     * 이미지
+     **/
     @Column(length = 200)
     private String imageUrl;
 
-    /** 노출 여부 **/
+    /**
+     * 상태
+     **/
+    @Enumerated(EnumType.STRING)
+    @Column(length = 10)
+    private MenuStatus status = MenuStatus.REGISTERED;
+
+    /**
+     * 노출 여부
+     **/
     private boolean visible = true;
 
-    /** 생성 일시 **/
+    /**
+     * 생성 일시
+     **/
     private LocalDateTime createdAt = LocalDateTime.now();
 
-    /** 삭제 일시 **/
+    /**
+     * 삭제 일시
+     **/
     private LocalDateTime deletedAt;
 
 
     public Menu(
-            Restaurant restaurant, String name, int price, String description,
-            boolean isMain, String imageUrl
+            Restaurant restaurant, String name, int price, String description, boolean isMain, String imageUrl
     ) {
         this.restaurant = restaurant;
         this.name = name;
@@ -64,10 +89,7 @@ public class Menu {
         this.imageUrl = imageUrl;
     }
 
-    public void update(
-            String name, int price, String description, boolean isMain,
-            String imageUrl
-    ) {
+    public void update(String name, int price, String description, boolean isMain, String imageUrl) {
         this.name = name;
         this.price = price;
         this.description = description;
@@ -75,8 +97,13 @@ public class Menu {
         this.imageUrl = imageUrl;
     }
 
-    public void delete () {
+    public void delete() {
+        if (this.status != MenuStatus.REGISTERED) {
+            throw new IllegalStateException("check failed");
+        }
+
         this.visible = false;
+        this.status = MenuStatus.DELETED;
         this.deletedAt = LocalDateTime.now();
     }
 }

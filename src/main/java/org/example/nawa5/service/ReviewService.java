@@ -10,11 +10,11 @@ public interface ReviewService {
     void register(Long userId, Long restaurantId, String content, int rating, String imageUrl);
 
     /** 리뷰 조회 **/
-    List<Review> get(Long id);
+    List<Review> gets(Long restaurantId);
 
     /** 리뷰 수정 **/
-    void update(Long id, String content, int rating, String imageUrl);
+    void update(Long id, Long userId, String content, int rating, String imageUrl);
 
     /** 리뷰 삭제 **/
-    void delete(Long id);
+    void delete(Long id, Long userId);
 }

@@ -7,6 +7,7 @@ import org.example.nawa5.repository.RestaurantRepository;
 import org.example.nawa5.service.RestaurantService;
 import org.springframework.stereotype.Service;
 import jakarta.transaction.Transactional;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -43,7 +44,6 @@ public class RestaurantServiceImpl implements RestaurantService {
     public List<Restaurant> get(RestaurantCategory category) {
         return restaurantRepository.findByCategory(category);
     }
-
 
     @Override
     public void update(

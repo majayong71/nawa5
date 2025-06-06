@@ -30,6 +30,7 @@ public class HotPost {
     private LocalDate date;
 
     /** 순위 **/
+    @Column(name = "rank_")
     private int rank;
 
     /** 카테고리 **/

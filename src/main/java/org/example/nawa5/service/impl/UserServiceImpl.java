@@ -6,6 +6,7 @@ import org.example.nawa5.domain.User;
 import org.example.nawa5.repository.UserRepository;
 import org.example.nawa5.service.UserService;
 import org.springframework.stereotype.Service;
+
 import java.util.regex.Pattern;
 
 
@@ -15,15 +16,14 @@ import java.util.regex.Pattern;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
-    private static final Pattern PASSWORD_PATTERN = Pattern.compile(
-            "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[!@#$%^&*()_+=-]).{8,20}$"
-    );
+    private static final Pattern PASSWORD_PATTERN =
+            Pattern.compile("^(?=.*[A-Za-z])(?=.*\\d)(?=.*[!@#$%^&*()_+=-]).{8,20}$");
 
     @Override
     public void register(String email, String password, String nickname) {
 
         // 이메일 중복 검사
-        if(userRepository.existsByEmail(email)) { // 이메일이 존재
+        if (userRepository.existsByEmail(email)) { // 이메일이 존재
             throw new IllegalArgumentException("이미 중복된 이메일입니다.");
         }
 

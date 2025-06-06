@@ -19,22 +19,19 @@ public class MenuServiceImpl implements MenuService {
     private final RestaurantRepository restaurantRepository;
 
     @Override
-    public void register(
-            Long id, String name, int price,
-            String description, boolean isMain, String imageUrl
-    ) {
-        Restaurant restaurant = restaurantRepository.findById(id).get();
+    public void register(Long restaurantId, String name, int price, String description, boolean isMain, String imageUrl) {
+        Restaurant restaurant = restaurantRepository.findById(restaurantId).get();
 
-        Menu menu = new Menu(
-                restaurant, name, price, description, isMain,
-                imageUrl
-        );
+        Menu menu = new Menu(restaurant, name, price, description, isMain, imageUrl);
+
         menuRepository.save(menu);
     }
 
     @Override
-    public List<Menu> getAll(Long id) {
-        return menuRepository.findByRestaurantId(id);
+    public List<Menu> getAll(Long restaurantId) {
+        Restaurant restaurant = restaurantRepository.findById(restaurantId).get();
+
+        return menuRepository.findByRestaurant(restaurant);
     }
 
     @Override
@@ -43,19 +40,16 @@ public class MenuServiceImpl implements MenuService {
     }
 
     @Override
-    public void update(
-            Long id, String name, int price, String description,
-            boolean isMain, String imageUrl
-    ) {
+    public void update(Long id, String name, int price, String description, boolean isMain, String imageUrl) {
         Menu menu = menuRepository.findById(id).get();
-        menu.update(
-                name, price, description, isMain, imageUrl
-        );
+
+        menu.update(name, price, description, isMain, imageUrl);
     }
 
     @Override
     public void delete(Long id) {
         Menu menu = menuRepository.findById(id).get();
+
         /** 도메인 메서드 delete 를 사용해서 상태를 visible = false 로 변경 **/
         menu.delete();
     }
