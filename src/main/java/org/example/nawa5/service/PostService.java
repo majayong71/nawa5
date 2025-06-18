@@ -23,14 +23,18 @@ public interface PostService {
      **/
     Post get(Long id);
 
+    List<Post> getByUserId(Long userId);
+
+    List<Post> getByCategory(PostCategory category);
+
     /**
      * 수정
      */
-    void update();
+    void update(Long id,PostCategory postCategory, String title, String content, String imageUrl);
 
     /**
      * 삭제
      **/
-    void delete();
+    void delete(Long id, Long userId);
 
 }
