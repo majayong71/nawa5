@@ -38,4 +38,24 @@ public class Banners {
     /** 생성 일시 **/
     private LocalDateTime createdAt = LocalDateTime.now();
 
+    /** 삭제 일시 **/
+    private LocalDateTime deletedAt;
+
+    public Banners(String imageUrl, int displayOrder, boolean isVisible, LocalDateTime exposureTime){
+        this.imageUrl= imageUrl;
+        this.displayOrder = displayOrder;
+        this.isVisible = isVisible;
+        this.exposureTime = exposureTime;
+    }
+
+    public void update(String imageUrl, int displayOrder){
+        this.imageUrl = imageUrl;
+        this.displayOrder = displayOrder;
+    }
+
+    public void delete() {
+        this.isVisible = false;
+        this.deletedAt = LocalDateTime.now();
+    }
+
 }

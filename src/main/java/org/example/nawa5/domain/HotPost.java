@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -13,7 +12,6 @@ import java.time.LocalDateTime;
  */
 @Entity
 @Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class HotPost {
@@ -45,5 +43,27 @@ public class HotPost {
 
     /** 생성 일시 **/
     private LocalDateTime createdAt = LocalDateTime.now();
+
+    /** 삭제 일시 **/
+    private LocalDateTime deletedAt;
+
+    public HotPost(Post post, LocalDate date, int rank, HotPostCategory hotPostCategory ) {
+        this.post = post;
+        this.date = date;
+        this.rank = rank;
+        this.hotPostCategory = hotPostCategory;
+    }
+
+    public void update(Post post, LocalDate date, int rank, HotPostCategory hotPostCategory) {
+        this.post = post;
+        this.date = date;
+        this.rank = rank;
+        this.hotPostCategory = hotPostCategory;
+    }
+
+    public void delete() {
+        this.hotPostStatus = HotPostStatus.DELETED;
+        this.deletedAt = LocalDateTime.now();
+    }
 
 }
