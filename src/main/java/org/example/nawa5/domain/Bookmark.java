@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import java.time.LocalDateTime;
 
 /**
@@ -12,7 +11,6 @@ import java.time.LocalDateTime;
  */
 @Entity
 @Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Bookmark {
@@ -38,4 +36,17 @@ public class Bookmark {
 
     /** 생성 일시 **/
     private LocalDateTime createdAt = LocalDateTime.now();
+
+    /** 삭제 일시 **/
+    private LocalDateTime deletedAt;
+
+    public Bookmark (User user, Post post) {
+        this.user = user;
+        this.post = post;
+    }
+
+    public void delete() {
+        this.bookmarkStatus = BookmarkStatus.DELETED;
+        deletedAt = LocalDateTime.now();
+    }
 }
