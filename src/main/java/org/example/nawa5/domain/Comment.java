@@ -33,14 +33,10 @@ public class Comment {
     @Column(length = 200)
     private String content;
 
-    /** 이미지 **/
-    @Column(length = 200)
-    private String imageUrl;
-
     /** 상태 **/
     @Enumerated(EnumType.STRING)
     @Column(length = 20)
-    private CommentStatus Status = CommentStatus.REGISTERED;
+    private CommentStatus status = CommentStatus.REGISTERED;
 
     /** 생성 일시 **/
     private LocalDateTime createdAt = LocalDateTime.now();
@@ -48,24 +44,22 @@ public class Comment {
     /** 삭제 일시 **/
     private LocalDateTime deletedAt;
 
-
-    public Comment(User user, Post post, String content, String imageUrl) {
+    public Comment(User user, Post post, String content) {
         this.user = user;
         this.post = post;
         this.content = content;
-        this.imageUrl = imageUrl;
     }
 
-    public void update(Long id, User user, String content, String imageUrl) {
-        this.id = id;
-        this.user = user;
+    public void update(String content) {
         this.content = content;
-        this.imageUrl = imageUrl;
     }
 
-    public void delete(Long id, User user) {
-        this.Status = Status.DELETED;
+    public void delete() {
+        if (this.status == CommentStatus.DELETED) {
+            throw new IllegalStateException("check failed");
+        }
+
+        this.status = status.DELETED;
         this.deletedAt = LocalDateTime.now();
     }
-
 }

@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.List;
 
-
 @Service
 @RequiredArgsConstructor
 @Transactional
@@ -32,12 +31,13 @@ public class HotPostServiceImpl implements HotPostService {
     }
 
     @Override
-    public List<HotPost> gets() {
-        return hotPostRepository.findAll();
+    public List<HotPost> gets(LocalDate date) {
+        return hotPostRepository.findByDateOrderByRank(date);
     }
 
     @Override
-    public void update(Long id, Post post, LocalDate date, int rank, HotPostCategory hotPostCategory) {
+    public void update(Long id, Long postId, LocalDate date, int rank, HotPostCategory hotPostCategory) {
+        Post post = postRepository.findById(postId).get();
         HotPost hotPost = hotPostRepository.findById(id).get();
 
         hotPost.update(post, date, rank, hotPostCategory);

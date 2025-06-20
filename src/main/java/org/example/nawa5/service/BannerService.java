@@ -1,6 +1,6 @@
 package org.example.nawa5.service;
 
-import org.example.nawa5.domain.Banners;
+import org.example.nawa5.domain.Banner;
 
 import java.util.List;
 
@@ -8,16 +8,15 @@ public interface BannerService {
     /**
      * 모든 배너 조회
      **/
-    List<Banners> gets();
+    List<Banner> gets();
 
     /**
      * 배너 수정
      **/
-    void update(Long id, String imageUrl, int displayOrder);
+    void update(Long id, String imageUrl,String linkUrl, int displayOrder);
 
     /**
      * 배너 삭제
      **/
     void delete(Long id);
-
 }

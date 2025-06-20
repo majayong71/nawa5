@@ -46,7 +46,11 @@ public class Bookmark {
     }
 
     public void delete() {
+        if (this.bookmarkStatus == BookmarkStatus.DELETED) {
+            throw new IllegalStateException("check failed.");
+        }
+
         this.bookmarkStatus = BookmarkStatus.DELETED;
-        deletedAt = LocalDateTime.now();
+        this.deletedAt = LocalDateTime.now();
     }
 }

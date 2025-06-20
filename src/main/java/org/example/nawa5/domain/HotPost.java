@@ -62,8 +62,11 @@ public class HotPost {
     }
 
     public void delete() {
+        if (this.hotPostStatus == HotPostStatus.DELETED) {
+            throw new IllegalStateException("check failed.");
+        }
+
         this.hotPostStatus = HotPostStatus.DELETED;
         this.deletedAt = LocalDateTime.now();
     }
-
 }
