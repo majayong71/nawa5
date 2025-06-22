@@ -112,7 +112,7 @@ public class Restaurant {
         this.visible = visible;
     }
 
-    public void delete () {
+    public void delete() {
         this.status = RestaurantStatus.DELETED;
         this.deletedAt = LocalDateTime.now();
     }

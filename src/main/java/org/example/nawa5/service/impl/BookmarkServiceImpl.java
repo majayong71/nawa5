@@ -34,7 +34,7 @@ public class BookmarkServiceImpl implements BookmarkService {
         User user = userRepository.findById(userId).get();
         Post post = postRepository.findById(postId).get();
 
-        Bookmark bookmark = new Bookmark(user,post);
+        Bookmark bookmark = new Bookmark(user, post);
 
         bookmarkRepository.save(bookmark);
     }
