@@ -38,8 +38,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void login(String email, String password) {
-
+    public String login(String email, String password) {
+        return "1234";
     }
 
     @Override

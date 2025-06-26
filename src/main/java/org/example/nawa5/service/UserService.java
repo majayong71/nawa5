@@ -8,7 +8,7 @@ public interface UserService {
     void register (String email, String password, String nickname);
 
     /** 로그인 **/
-    void login (String email, String password);
+    String login (String email, String password);
 
     /** 회원 정보 조회 **/
     User get(Long id);
