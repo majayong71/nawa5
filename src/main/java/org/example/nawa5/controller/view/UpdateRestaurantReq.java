@@ -6,7 +6,7 @@ import org.example.nawa5.domain.RestaurantCategory;
 import java.time.LocalDateTime;
 
 @Getter
-public class RegisterRestaurantReq {
+public class UpdateRestaurantReq {
     private String name;
     private RestaurantCategory category;
     private String address;
@@ -14,10 +14,11 @@ public class RegisterRestaurantReq {
     private String phoneNumber;
     private String description;
     private String mainImageUrl;
+    private boolean visible;
 
-    public RegisterRestaurantReq(
-            String name, RestaurantCategory category, String address,LocalDateTime businessHours, String phoneNumber,
-            String description, String mainImageUrl
+    public UpdateRestaurantReq(
+            String name, RestaurantCategory category, String address, LocalDateTime businessHours,
+            String phoneNumber, String description, String mainImageUrl, boolean visible
     ) {
         this.name = name;
         this.category = category;
@@ -26,5 +27,6 @@ public class RegisterRestaurantReq {
         this.phoneNumber = phoneNumber;
         this.description = description;
         this.mainImageUrl = mainImageUrl;
+        this.visible = visible;
     }
 }

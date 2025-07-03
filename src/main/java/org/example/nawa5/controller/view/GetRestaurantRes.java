@@ -7,13 +7,13 @@ import java.time.LocalDateTime;
 
 @Getter
 public class GetRestaurantRes {
-    private String name;
-    private RestaurantCategory category;
-    private String address;
-    private LocalDateTime businessHours;
-    private String phoneNumber;
-    private String description;
-    private String mainImageUrl;
+    private final String name;
+    private final RestaurantCategory category;
+    private final String address;
+    private final LocalDateTime businessHours;
+    private final String phoneNumber;
+    private final String description;
+    private final String mainImageUrl;
 
     public GetRestaurantRes(
             String name, RestaurantCategory category, String address, LocalDateTime businessHours,

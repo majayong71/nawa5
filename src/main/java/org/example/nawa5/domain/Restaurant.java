@@ -40,7 +40,7 @@ public class Restaurant {
     private String address;
 
     /**
-     * 영업 시간
+     * 영업 시간 [ Local Date Time 이 아닌 String 으로 바꿔야할까 ]
      **/
     private LocalDateTime businessHours;
 

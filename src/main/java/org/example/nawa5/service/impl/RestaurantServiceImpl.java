@@ -63,7 +63,6 @@ public class RestaurantServiceImpl implements RestaurantService {
 
         restaurant.delete();
     }
-
 //    @Override
 //    public List<Restaurant> crawlingRestaurantFromNaverMap() {
 //        String iframeUrl = "https://pcmap.place.naver.com/place/list?query=%ED%99%8D%EB%8C%80%EC%9E%85%EA%B5%AC%EC%97%AD%EB%A7%9B%EC%A7%91&x=126.804843&y=37.398715&clientX=126.804843&clientY=37.398715&display=70&ts=1716879983079&mapUrl=https%3A%2F%2Fmap.naver.com%2Fp%2Fsearch%2F%ED%99%8D%EB%8C%80%EC%9E%85%EA%B5%AC%EC%97%AD%EB%A7%9B%EC%A7%91";
