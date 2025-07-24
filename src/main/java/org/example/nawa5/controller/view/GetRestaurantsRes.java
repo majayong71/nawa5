@@ -6,15 +6,16 @@ import org.example.nawa5.domain.Restaurant;
 import java.util.List;
 import java.util.stream.Collectors;
 
+// EntityData 는 다건에서만 사용한다.
 @Getter
 public class GetRestaurantsRes {
-    private final List<GetRestaurantRes> restaurants;
+    private final List<RestaurantData> restaurants;
 
-    public GetRestaurantsRes(List<Restaurant> restaurantList) {
-        this.restaurants = restaurantList.stream().map(restaurant -> new GetRestaurantRes(
+    public GetRestaurantsRes(List<Restaurant> restaurants) {
+        this.restaurants = restaurants.stream().map(restaurant -> new RestaurantData(
                         restaurant.getName(), restaurant.getCategory(), restaurant.getAddress(), restaurant.getBusinessHours(),
                         restaurant.getPhoneNumber(), restaurant.getDescription(), restaurant.getMainImageUrl()
                 )
-        ).collect(Collectors.toList());
+            ).collect(Collectors.toList());
     }
 }

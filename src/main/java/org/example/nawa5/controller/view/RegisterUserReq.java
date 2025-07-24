@@ -4,9 +4,9 @@ import lombok.Getter;
 
 @Getter
 public class RegisterUserReq {
-    private String email;
-    private String password;
-    private String nickname;
+    private final String email;
+    private final String password;
+    private final String nickname;
 
     public RegisterUserReq (String email, String password, String nickname) {
         this.email = email;

@@ -4,7 +4,7 @@ import lombok.Getter;
 
 @Getter
 public class LoginUserRes {
-    private String accessToken;
+    private final String accessToken;
 
     public LoginUserRes (String accessToken){
         this.accessToken = accessToken;

@@ -28,22 +28,20 @@ public class RestaurantController {
 
         return new GetRestaurantsRes(restaurants);
     }
-
-    /**
+    //todo
+    /** LocalTime ? String ? LocalDateTime ?
     startHour = 2024.01.01 12:10:00
     endHour = 2024.01.01 24:00:00
 
     24년 1월 1일 12시 10분 ~ 24년 1월 1일 24시 00분
      **/
 
+    // 레스토랑 조회
     @GetMapping("/{id}")
     public GetRestaurantRes get(@PathVariable Long id) {
         Restaurant restaurant = restaurantService.get(id);
 
-        return new GetRestaurantRes(
-                restaurant.getName(), restaurant.getCategory(), restaurant.getAddress(), restaurant.getBusinessHours(),
-                restaurant.getPhoneNumber(), restaurant.getDescription(), restaurant.getMainImageUrl()
-        );
+        return new GetRestaurantRes(restaurant);
     }
 
     @PostMapping("/{id}")

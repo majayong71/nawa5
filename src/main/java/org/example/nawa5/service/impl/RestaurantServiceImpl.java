@@ -20,7 +20,7 @@ public class RestaurantServiceImpl implements RestaurantService {
 
     @Override
     public void register(
-            String name, RestaurantCategory category, String address, LocalDateTime businessHours,
+            String name, RestaurantCategory category, String address, String businessHours,
             String phoneNumber, String description, String mainImageUrl
     ) {
         Restaurant restaurant = new Restaurant(
@@ -47,7 +47,7 @@ public class RestaurantServiceImpl implements RestaurantService {
 
     @Override
     public void update(
-            Long id, String name, RestaurantCategory category, String address, LocalDateTime businessHours,
+            Long id, String name, RestaurantCategory category, String address, String businessHours,
             String phoneNumber, String description, String mainImageUrl, Boolean visible
     ) {
         Restaurant restaurant = restaurantRepository.findById(id).get();

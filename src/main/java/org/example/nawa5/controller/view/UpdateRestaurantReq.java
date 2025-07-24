@@ -7,17 +7,17 @@ import java.time.LocalDateTime;
 
 @Getter
 public class UpdateRestaurantReq {
-    private String name;
-    private RestaurantCategory category;
-    private String address;
-    private LocalDateTime businessHours;
-    private String phoneNumber;
-    private String description;
-    private String mainImageUrl;
-    private boolean visible;
+    private final String name;
+    private final RestaurantCategory category;
+    private final String address;
+    private final String businessHours;
+    private final String phoneNumber;
+    private final String description;
+    private final String mainImageUrl;
+    private final boolean visible;
 
     public UpdateRestaurantReq(
-            String name, RestaurantCategory category, String address, LocalDateTime businessHours,
+            String name, RestaurantCategory category, String address, String businessHours,
             String phoneNumber, String description, String mainImageUrl, boolean visible
     ) {
         this.name = name;

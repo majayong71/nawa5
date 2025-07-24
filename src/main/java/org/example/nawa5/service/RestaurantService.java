@@ -12,7 +12,7 @@ public interface RestaurantService {
      * 레스토랑 등록 (관리자 or 크롤링 후 수동 등록 )
      **/
     void register(
-            String name, RestaurantCategory category, String address, LocalDateTime businessHours,
+            String name, RestaurantCategory category, String address, String businessHours,
             String phoneNumber, String description, String mainImageUrl
     );
 
@@ -35,7 +35,7 @@ public interface RestaurantService {
      * 레스토랑 정보 수정
      **/
     void update(
-            Long id, String name, RestaurantCategory category, String address, LocalDateTime businessHours,
+            Long id, String name, RestaurantCategory category, String address, String businessHours,
             String phoneNumber, String description, String mainImageUrl, Boolean visible
     );
 

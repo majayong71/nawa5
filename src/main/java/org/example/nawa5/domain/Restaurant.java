@@ -41,8 +41,9 @@ public class Restaurant {
 
     /**
      * 영업 시간 [ Local Date Time 이 아닌 String 으로 바꿔야할까 ]
+     * ex ) 김밥천국 09 : 00 ~ 23 : 00 월 휴무
      **/
-    private LocalDateTime businessHours;
+    private String businessHours;
 
     /**
      * 연락처
@@ -86,7 +87,7 @@ public class Restaurant {
 
 
     public Restaurant(
-            String name, RestaurantCategory category, String address, LocalDateTime businessHours,
+            String name, RestaurantCategory category, String address, String businessHours,
             String phoneNumber, String description, String mainImageUrl
     ) {
         this.name = name;
@@ -99,7 +100,7 @@ public class Restaurant {
     }
 
     public void update(
-            String name, RestaurantCategory category, String address, LocalDateTime businessHours, String phoneNumber,
+            String name, RestaurantCategory category, String address, String businessHours, String phoneNumber,
             String description, String mainImageUrl, Boolean visible
     ) {
         this.name = name;

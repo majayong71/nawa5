@@ -5,17 +5,12 @@ import org.example.nawa5.domain.Menu;
 
 @Getter
 public class GetMenuRes {
-    private final String name;
-    private final int price;
-    private final String description;
-    private final boolean isMain;
-    private final String imageUrl;
+    private final MenuData menu;
 
-    public GetMenuRes(String name, int price, String description, boolean isMain, String imageUrl) {
-        this.name = name;
-        this.price = price;
-        this.description = description;
-        this.isMain = isMain;
-        this.imageUrl = imageUrl;
+    public GetMenuRes(Menu menu) {
+        this.menu = new MenuData(
+                menu.getName(), menu.getPrice(), menu.getDescription(), menu.isMain(),
+                menu.getImageUrl()
+        );
     }
 }

@@ -7,7 +7,7 @@ import lombok.Getter;
  */
 @Getter
 public class UpdatePasswordUserReq {
-    private String password;
+    private final String password;
 
     public UpdatePasswordUserReq(String password) {
         this.password = password;
