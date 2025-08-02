@@ -1,8 +1,10 @@
 package org.example.nawa5.controller.view;
 
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import org.example.nawa5.domain.PostCategory;
 
+@RequiredArgsConstructor
 @Getter
 public class PostData {
     private final Long userId;
@@ -12,17 +14,4 @@ public class PostData {
     private final String imageUrl;
     private final int commentCount;
     private final int viewCount;
-
-    public PostData(
-            Long userId, String title, String content, PostCategory category, String imageUrl, int commentCount,
-            int viewCount
-    ) {
-        this.userId = userId;
-        this.title = title;
-        this.content = content;
-        this.category = category;
-        this.imageUrl = imageUrl;
-        this.commentCount = commentCount;
-        this.viewCount = viewCount;
-    }
 }

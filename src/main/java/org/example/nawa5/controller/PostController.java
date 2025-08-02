@@ -27,6 +27,6 @@ public class PostController {
     public GetPostRes get(@PathVariable Long id) {
         Post post = postService.get(id);
 
-        return new GetPostRes();
+        return new GetPostRes(post);
     }
 }

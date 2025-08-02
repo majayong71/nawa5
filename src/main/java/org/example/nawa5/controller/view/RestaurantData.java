@@ -1,8 +1,10 @@
 package org.example.nawa5.controller.view;
 
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import org.example.nawa5.domain.RestaurantCategory;
 
+@RequiredArgsConstructor
 @Getter
 public class RestaurantData {
     private final String name;
@@ -12,17 +14,4 @@ public class RestaurantData {
     private final String phoneNumber;
     private final String description;
     private final String mainImageUrl;
-
-    public RestaurantData(
-            String name, RestaurantCategory category, String address, String businessHours, String phoneNumber,
-            String description, String mainImageUrl
-    ) {
-        this.name = name;
-        this.category = category;
-        this.address = address;
-        this.businessHours = businessHours;
-        this.phoneNumber = phoneNumber;
-        this.description = description;
-        this.mainImageUrl = mainImageUrl;
-    }
 }
