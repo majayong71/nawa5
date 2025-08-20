@@ -22,9 +22,6 @@ public class PostController {
         postService.register(userId, req.getCategory(), req.getTitle(), req.getContent(), req.getMainImageUrl());
     }
 
-
-
-
     // Todo
     //게시글 단건 조회
     @GetMapping("/{id}")
