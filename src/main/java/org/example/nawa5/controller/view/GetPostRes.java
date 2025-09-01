@@ -16,7 +16,7 @@ public class GetPostRes {
     private final int commentCount;
     private final int viewCount;
 
-    public GetPostRes (Post post) {
+    public GetPostRes(Post post) {
         this.userId = post.getUser().getId();
         this.title = post.getTitle();
         this.content = post.getContent();
