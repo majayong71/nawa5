@@ -85,7 +85,6 @@ public class Restaurant {
      **/
     private LocalDateTime deletedAt;
 
-
     public Restaurant(
             String name, RestaurantCategory category, String address, String businessHours,
             String phoneNumber, String description, String mainImageUrl

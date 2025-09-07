@@ -66,15 +66,15 @@ public class Post {
     private PostStatus status = PostStatus.REGISTERED;
 
     /**
+     * 생성 일시
+     **/
+    private LocalDateTime createdAt = LocalDateTime.now();
+
+    /**
      * 삭제 일시
      **/
     private LocalDateTime deletedAt;
 
-
-    /**
-     * 생성 일시
-     **/
-    private LocalDateTime createdAt = LocalDateTime.now();
 
     public Post(User user, PostCategory category, String title, String content, String imageUrl) {
         this.user = user;
