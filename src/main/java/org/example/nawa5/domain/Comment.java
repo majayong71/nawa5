@@ -70,7 +70,7 @@ public class Comment {
             throw new IllegalStateException("check failed");
         }
 
-        this.status = status.DELETED;
+        this.status = CommentStatus.DELETED;
         this.deletedAt = LocalDateTime.now();
     }
 }
