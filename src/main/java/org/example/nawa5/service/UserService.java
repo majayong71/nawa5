@@ -11,6 +11,7 @@ public interface UserService {
 
     /**
      * 로그인
+     * 추후 JWT 토큰 , 세션 ID 를 반환
      **/
     String login(String email, String password);
 

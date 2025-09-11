@@ -23,7 +23,7 @@ public class ReviewServiceImpl implements ReviewService {
     private final UserRepository userRepository;
 
     @Override
-    public void register(Long userId, Long restaurantId, String content, int rating, String imageUrl) {
+    public void register(Long userId, Long restaurantId, String content, String imageUrl, int rating) {
         User user = userRepository.findById(userId).get();
         Restaurant restaurant = restaurantRepository.findById(restaurantId).get();
 

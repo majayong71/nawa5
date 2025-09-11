@@ -7,7 +7,7 @@ import java.util.List;
 public interface ReviewService {
 
     /** 리뷰 등록 **/
-    void register(Long userId, Long restaurantId, String content, int rating, String imageUrl);
+    void register(Long userId, Long restaurantId, String content, String imageUrl, int rating);
 
     /** 리뷰 조회 **/
     List<Review> gets(Long restaurantId);

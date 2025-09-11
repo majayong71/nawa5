@@ -3,7 +3,6 @@ package org.example.nawa5.service;
 import org.example.nawa5.domain.Restaurant;
 import org.example.nawa5.domain.RestaurantCategory;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 public interface RestaurantService {
