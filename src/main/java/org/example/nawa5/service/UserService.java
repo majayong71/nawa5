@@ -5,6 +5,13 @@ import org.example.nawa5.domain.User;
 public interface UserService {
 
     /**
+     * 유저 이메일 인증
+     * void Email인증 (email)
+     *
+     */
+
+
+    /**
      * 회원 가입
      **/
     void register(String email, String password, String nickname);
