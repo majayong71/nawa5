@@ -47,8 +47,9 @@ public class CommentServiceImpl implements CommentService {
         comment.update(content);
     }
 
+    // userId 체크하고 삭제 진행하는 코드 추가하자
     @Override
-    public void delete(Long id) {
+    public void delete(Long id, Long userId) {
         Comment comment = commentRepository.findById(id).get();
 
         comment.delete();

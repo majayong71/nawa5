@@ -24,5 +24,5 @@ public interface CommentService {
     /**
      * 댓글 삭제
      **/
-    void delete(Long id);
+    void delete(Long id, Long userId);
 }
